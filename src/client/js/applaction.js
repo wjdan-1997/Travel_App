@@ -12,15 +12,15 @@ function handleSubmit (w){
 
             get_city_api(city_Url,form_city,Parameters1,us) //   calback function AND return city_request
             
-            .then((city_request)=>{ //  return data_Lat_Lon
+            .then((city_request)=>{ //  return data_Lat_Lon to use in weather api 
             console.log('check if data here to use ! ',city_request)
-            const city_data={   //  Latitude and Longitude
+            const city_data={   //  Latitude and Longitude store in object 
               lat : city_request.geonames[0].lat, // 24.68773
               long : city_request.geonames[0].lng,  // 46.72185 
             };
             
              console.log(city_data)
-                 return city_data
+                 return city_data // lat long data 
             }) 
             
            .then((city_data)=>{
@@ -30,19 +30,19 @@ function handleSubmit (w){
                     const weather_in_req = await fetch (`${weather_url}&lat=${lat}&lon=${long}&key=${weather_key}`)
                     console.log('weather_URL:', weather_in_req)
                     
-                        const weather_in_RES = await weather_in_req.json();
+                        const weather_in_RES = await weather_in_req.json(); // return with json(format)
                         console.log('weather RES:', weather_in_RES)
                        return weather_in_RES 
                 }
 
-                  return get_weather_api(city_data.lat,city_data.long)
+                  return get_weather_api(city_data.lat,city_data.long) // Done fetching
                  
             })
             
             
             .then((w_data)=>{  // w_data: data return from the previous function 
 
-                const weather_post = async function (url , data){  // url : http://localhost:8083/api , data :
+                const weather_post = async function (url , data){  // url : http://localhost:8083/api , data : fetch from api and save in server key 
                     const weather_request = await fetch (url,{
                     method: "POST",
                     credentials: "same-origin",
@@ -63,7 +63,7 @@ function handleSubmit (w){
                 
                     const weather_response = await weather_request.json();
                     console.log("The response from weather: ",weather_response)
-                    return weather_response
+                    return weather_response // Good it's return 
                 }
               const  pic = weather_post('http://127.0.0.1:8070/api',{
                 form_city, // .value
@@ -135,7 +135,8 @@ var form_city = document.getElementById('city').value
 
 // this function will work untel user submit 
 const ElmentTarget = document.getElementById('submit');
-ElmentTarget.addEventListener('click', handleSubmit ); // function handelSubmit work with EventListen 
+ElmentTarget.addEventListener('click', handleSubmit ); 
+// function handelSubmit work with EventListen 
 
 
 import {update_picture} from './pic_update'

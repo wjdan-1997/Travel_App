@@ -3,7 +3,7 @@
     const pix_url = 'https://pixabay.com/api/?'
     const pix_key = '19520465-cdac67a723e8d1376760718ba'  
     const Parameters2='&city&image_type=photo'  
-    
+    //  pixabay response.json()to fetch image 
     
     let start_date = document.getElementById('start').value
     let end_date = document.getElementById('end').value
