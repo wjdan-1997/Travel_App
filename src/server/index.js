@@ -1,16 +1,20 @@
-
+// Require Express to run server and routes
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require ('body-parser');
 var path = require('path');
 const fetch = require('node-fetch');
-//
+// Start up an instance of app
 const app = express()
-//
-app.use(cors());
+/* Dependencies */
+
+// Cors for cross origin allowance
+app.use(cors()); // the connection between the client and server
+/* Middleware*/
+//Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//
+// Initialize the main project folder
 app.use(express.static('dist'));
 //
 console.log(__dirname)
@@ -33,9 +37,9 @@ app.listen(8070,()=>{
 })
 
 
-// POST Router
+// Setup empty JS object to act as endpoint for all routes
 const projectData={}
-
+// Methode POST : Add New Data 
 app.post('/api', async (req, res)=>{
     data = [
         projectData['CityName'] = req.body.city,

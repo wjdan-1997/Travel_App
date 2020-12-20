@@ -18,7 +18,7 @@ module.exports = {
     stats: 'verbose',
     devServer: {
         inline: true,
-        port: 8042,
+        port: 8043,
       },
     
     module: {

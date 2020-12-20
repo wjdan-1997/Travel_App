@@ -1,19 +1,21 @@
-
  async function update_picture (pic){
     const pix_url = 'https://pixabay.com/api/?'
     const pix_key = '19520465-cdac67a723e8d1376760718ba'  
     const Parameters2='&city&image_type=photo'  
     //  pixabay response.json()to fetch image 
     
+  
     let start_date = document.getElementById('start').value
     let end_date = document.getElementById('end').value
     let new_date = new Date()
     let travel_Start = new Date(start_date)
-    let travel_End = new Date(end_date)
+    let travel_End = new Date(end_date) 
+    // calculate how many days between trip departure and arrival
     let time_result = travel_Start.getTime() - new_date.getTime()
     let diff_in_dates = Math.round(time_result / (1000*3600*24))
     let dates = {start_date, end_date, diff_in_dates} 
 
+     //  alert when a user enters an incorrect date
     if(travel_Start < new_date || travel_End < new_date){
         alert('Please Enter a Valid Date For Travel, Thanks!')
         return false
@@ -25,12 +27,12 @@
     }
    
 
-    const main = document.querySelector('main')
-    const div_Element = document.createElement('div')
-    div_Element.setAttribute('class', 'final_result')
-    main.appendChild(div_Element)
+    const main = document.querySelector('main') 
+    const div_Element = document.createElement('div') // creat new element 
+    div_Element.setAttribute('class', 'final_result') // creat class and append the div element 
+    main.appendChild(div_Element) 
     const final_touch = document.querySelector('.final_result');
-    const CityName = pic.CityName;
+    const CityName = pic.CityName;  // git value 
    const res =  await fetch(`${pix_url}key=${pix_key}&q=${CityName}${Parameters2}`)
   
     
