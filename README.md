@@ -1,8 +1,7 @@
 
 ## The Goal For project
-A travel App that obtains a desired trip location & date from the user.
-The user will enter the location he wants to travel to and the date of departure. It will get the current weather forecast and a picture of the location
-By using information obtained from external APIs. 
+ travel App for  trip location & date from the user.
+
 ## Project Instructions
 The goal of this project is to give you practice with:
 - Setting up Webpack
